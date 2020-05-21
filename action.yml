@@ -4,6 +4,9 @@ inputs:
   SECRET_NAME:
     description: 'Set secret name that you want to get.'
     required: true
+  AWS_REGION:
+    description: 'Set AWS region'
+    required: true
   OUTPUT_PATH:
     description: 'Set output file where variables are write'
     required: false
