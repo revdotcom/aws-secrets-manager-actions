@@ -5,12 +5,7 @@ const fs = require('fs')
 const outputPath = core.getInput('OUTPUT_PATH')
 const secretName = core.getInput('SECRET_NAME')
 
-const secretsManager = new aws.SecretsManager({
-  accessKeyId: core.getInput('AWS_ACCESS_KEY_ID'),
-  secretAccessKey: core.getInput('AWS_SECRET_ACCESS_KEY'),
-  region: core.getInput('AWS_DEFAULT_REGION'),
-  sessionToken: core.getInput('AWS_SESSION_TOKEN')
-})
+const secretsManager = new aws.SecretsManager()
 
 async function getSecretValue (secretsManager, secretName) {
   return secretsManager.getSecretValue({ SecretId: secretName }).promise()
