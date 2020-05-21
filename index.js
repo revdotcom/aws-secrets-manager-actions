@@ -5,7 +5,7 @@ const fs = require('fs')
 const outputPath = core.getInput('OUTPUT_PATH')
 const secretName = core.getInput('SECRET_NAME')
 
-aws.config.update({ region: core.getInput('AWS_REGION') })
+aws.config.update({ region: 'us-west-2' })
 
 const secretsManager = new aws.SecretsManager()
 
