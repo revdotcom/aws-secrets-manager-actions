@@ -6,8 +6,10 @@ const outputPath = core.getInput('OUTPUT_PATH')
 const secretName = core.getInput('SECRET_NAME')
 
 aws.config.update({ region: 'us-west-2' })
-
 const secretsManager = new aws.SecretsManager()
+console.log('region before is ' + secretsManager.config.region);
+secretsManager.config.region = 'us-east-2'
+console.log('region is ' + secretsManager.config.region);
 
 async function getSecretValue (secretsManager, secretName) {
   return secretsManager.getSecretValue({ SecretId: secretName }).promise()
