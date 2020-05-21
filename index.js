@@ -5,11 +5,13 @@ const fs = require('fs')
 const outputPath = core.getInput('OUTPUT_PATH')
 const secretName = core.getInput('SECRET_NAME')
 
-aws.config.update({ region: 'us-west-2' })
-const secretsManager = new aws.SecretsManager()
-core.debug('region before is ' + secretsManager.config.region);
-secretsManager.config.region = 'us-east-2'
-core.debug('region is ' + secretsManager.config.region);
+const secretsManager = new aws.SecretsManager({
+  accessKeyId: core.getInput('AWS_ACCESS_KEY_ID'),
+  secretAccessKey: core.getInput('AWS_SECRET_ACCESS_KEY'),
+  region: core.getInput('AWS_REGION'),
+  sessionToken: core.getInput('AWS_SESSION_TOKEN')
+})
+core.debug(" manager config is " + secretsManager.config)
 
 async function getSecretValue (secretsManager, secretName) {
   return secretsManager.getSecretValue({ SecretId: secretName }).promise()
