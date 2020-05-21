@@ -10,6 +10,9 @@ inputs:
   AWS_SECRET_ACCESS_KEY:
     description: 'Set Aws Secret access Key'
     required: true
+  AWS_SESSION_TOKEN:
+    description: 'Set Aws Session token (optional)'
+    required: false
   AWS_DEFAULT_REGION:
     description: 'Set Aws default region'
     required: true

@@ -8,7 +8,7 @@ const secretName = core.getInput('SECRET_NAME')
 const secretsManager = new aws.SecretsManager({
   accessKeyId: core.getInput('AWS_ACCESS_KEY_ID'),
   secretAccessKey: core.getInput('AWS_SECRET_ACCESS_KEY'),
-  region: core.getInput('AWS_DEFAULT_REGION')
+  region: core.getInput('AWS_SESSION_TOKEN')
 })
 
 async function getSecretValue (secretsManager, secretName) {
