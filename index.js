@@ -5,9 +5,9 @@ const fs = require('fs')
 const outputPath = core.getInput('OUTPUT_PATH')
 const secretName = core.getInput('SECRET_NAME')
 
-const secretsManager = new aws.SecretsManager({
-  region: core.getInput('AWS_REGION'),
-})
+aws.config.update({ region: core.getInput('AWS_REGION') })
+
+const secretsManager = new aws.SecretsManager()
 
 async function getSecretValue (secretsManager, secretName) {
   return secretsManager.getSecretValue({ SecretId: secretName }).promise()
